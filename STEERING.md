@@ -36,7 +36,7 @@ Backend production akan memakai session login cookie. Jangan mencoba menyelesaik
 
 Saat dashboard mulai berkembang, migrasikan ke **React + TypeScript + Vite** dan tambahkan PWA menggunakan `vite-plugin-pwa`. Hasil build tetap file statis yang dilayani Nginx; tidak perlu proses Node.js permanen di VPS.
 
-Target produksi adalah satu origin `https://smarthome.adzano.my.id`, dengan API pada path `/api`. Gunakan URL relatif agar cookie login bekerja tanpa CORS.
+Target produksi adalah satu origin `https://smarthome.elang.my.id`, dengan API pada path `/api`. Gunakan URL relatif agar cookie login bekerja tanpa CORS.
 
 Fase PWA pertama harus mencakup manifest, ikon, install prompt, dan tampilan status offline. Jangan mengantre atau mengulang command AC otomatis ketika offline karena perintah IR dapat menjadi tidak relevan saat koneksi kembali.
 
@@ -55,4 +55,4 @@ Backend lokal secara default berada di `http://127.0.0.1:8000`.
 1. Menambahkan halaman login, logout, dan status session.
 2. Menampilkan status perangkat serta command history.
 3. Migrasi bertahap ke React/Vite dan mengaktifkan PWA.
-4. Deploy static build ke VPS setelah DNS `smarthome.adzano.my.id` siap.
+4. Deploy static build ke VPS setelah DNS `smarthome.elang.my.id` siap.
