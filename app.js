@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = window.SMART_HOME_API_URL || "http://127.0.0.1:8000";
 const presets = [
   ["cool_19", "Cool 19°C"],
   ["cool_20", "Cool 20°C"],
