@@ -1,0 +1,8 @@
+{
+  "name": "Smart Home",
+  "short_name": "Smart Home",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b1118",
+  "theme_color": "#101820"
+}

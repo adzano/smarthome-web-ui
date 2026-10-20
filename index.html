@@ -3,22 +3,48 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101820">
+    <meta name="description" content="Dashboard kontrol Smart Home pribadi.">
     <title>Smart Home</title>
+    <link rel="manifest" href="manifest.webmanifest">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <main>
-      <header>
+    <main class="shell">
+      <section id="login-view" class="auth-card" aria-labelledby="login-title" hidden>
         <p class="eyebrow">SMART HOME</p>
-        <h1>AC Sharp</h1>
-        <p id="connection" class="status">Mengecek backend…</p>
-      </header>
-      <section class="card" aria-labelledby="preset-heading">
-        <h2 id="preset-heading">Pilih pengaturan</h2>
-        <div id="presets" class="presets"></div>
-        <p id="message" role="status"></p>
+        <h1 id="login-title">Masuk</h1>
+        <p class="subtle">Gunakan akun dashboard Anda untuk mengontrol perangkat.</p>
+        <form id="login-form" class="login-form">
+          <label>Username<input id="username" name="username" autocomplete="username" required></label>
+          <label>Password<input id="password" name="password" type="password" autocomplete="current-password" required></label>
+          <button id="login-button" class="primary" type="submit">Masuk</button>
+        </form>
+        <p id="login-message" class="message" role="alert"></p>
       </section>
-      <p class="note">Status perintah menandakan pengiriman ke backend. Respons fisik AC bergantung pada posisi transmitter.</p>
+      <section id="dashboard-view" hidden>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">SMART HOME</p>
+            <h1>AC Sharp</h1>
+            <p id="connection" class="status">Mengecek perangkat…</p>
+          </div>
+          <button id="logout-button" class="text-button" type="button">Keluar</button>
+        </header>
+        <section class="card" aria-labelledby="preset-heading">
+          <div class="card-heading">
+            <div>
+              <p class="section-label">RUANGAN</p>
+              <h2 id="preset-heading">AC Sharp</h2>
+            </div>
+            <span id="device-badge" class="badge">Memuat</span>
+          </div>
+          <p id="device-detail" class="subtle">Menghubungkan ke perangkat…</p>
+          <div id="presets" class="presets" aria-label="Pengaturan AC"></div>
+          <p id="message" class="message" role="status"></p>
+        </section>
+        <p class="note">Perintah dikirim terenkripsi melalui server ke ESP32. Respons AC tetap bergantung pada posisi transmitter IR.</p>
+      </section>
     </main>
     <script src="config.js"></script>
     <script src="app.js"></script>

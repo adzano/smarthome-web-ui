@@ -4,16 +4,16 @@ Tanggal acuan: 20 Oktober 2026. Dokumen ini memberi konteks untuk agent atau kon
 
 ## Tujuan
 
-Repository public ini berisi dashboard Smart Home untuk mengendalikan ESP32 pengirim IR AC Sharp melalui backend. Versi saat ini adalah proof of concept statis dengan empat preset AC.
+Repository public ini berisi dashboard Smart Home untuk mengendalikan ESP32 pengirim IR AC Sharp melalui backend. Versi saat ini adalah dashboard statis dengan login session, status perangkat, dan empat preset AC.
 
 Jangan simpan password, API key, token MQTT, alamat IP privat, atau file `config.js` produksi di repository public ini.
 
 ## Status saat ini
 
-- UI vanilla HTML/CSS/JavaScript berjalan lokal dengan static server.
-- Keempat tombol preset memanggil backend dan telah memicu LED transmitter ESP32 melalui MQTT.
-- API lokal saat ini dikonfigurasi melalui `config.js`, yang diabaikan Git.
-- Web UI belum memiliki halaman login dan belum merupakan PWA.
+- UI vanilla HTML/CSS/JavaScript memakai login, logout, serta status session dari backend.
+- Keempat tombol preset mengirim perintah melalui session cookie dan tidak menyimpan API key di browser.
+- Production menggunakan URL relatif dan dapat dilayani Nginx pada origin yang sama dengan API.
+- Manifest dan service worker dasar tersedia. Service worker hanya menyimpan shell UI dan tidak pernah mengantre command AC.
 
 Keberhasilan respons API hanya menunjukkan perintah diterima backend. Respons fisik AC tetap bergantung pada pancaran IR dan posisi transmitter.
 
@@ -52,7 +52,7 @@ Backend lokal secara default berada di `http://127.0.0.1:8000`.
 
 ## Pekerjaan berikutnya
 
-1. Menambahkan halaman login, logout, dan status session.
-2. Menampilkan status perangkat serta command history.
-3. Migrasi bertahap ke React/Vite dan mengaktifkan PWA.
-4. Deploy static build ke VPS setelah DNS `smarthome.elang.my.id` siap.
+1. Menampilkan command history.
+2. Menambahkan ikon PWA dan prompt install yang ramah pengguna.
+3. Migrasi bertahap ke React/Vite bila fitur bertambah.
+4. Deploy static files ke VPS pada `smarthome.elang.my.id`.
